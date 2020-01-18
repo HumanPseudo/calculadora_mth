@@ -16,7 +16,7 @@ if(__name__ == "__main__"):
         if(opt == "1"):
             continue
         elif(opt == "2"):
-            print ("1: Ingrese la cantidad de articulaciones que posee el robot (desde la base) \n )")
+            print ("1: Ingrese la cantidad de eslabones que posee el robot (desde la base) \n )")
             print ("2:  \n )")
         elif(opt.upper() == "S"):
             print("\n SALIO....")
