@@ -14,18 +14,18 @@ class manipulador():
         bandera = eslabones-1
         for i in range(eslabones):
             if (i == 0):
-                print("______eslabon______no#" + str(i))
+                print("\n\n\n______eslabon______no #" + str(i))
                 self.cadena_cinematica.append(eslabon(0))
                 print("________articulacion___________")
                 self.cadena_cinematica.append(articulacion())
             elif(i == bandera):
-                print("______eslabon______no#" + str(i))
+                print("\n\n\n______eslabon______no #" + str(i))
                 self.cadena_cinematica.append(eslabon(1))
             #elif(i !=)
             else:
-                print("______eslabon______no#" + str(i))
+                print("\n\n\n______eslabon______no #" + str(i))
                 self.cadena_cinematica.append(eslabon(2))
-                print("________articulacion___________")
+                print("________articulacion___________ ")
                 self.cadena_cinematica.append(articulacion())
 
     def imprimir_cadena(self):
@@ -34,7 +34,7 @@ class manipulador():
             print("posicion numero " + str(i))
             print("_________________________")
             self.cadena_cinematica[i].imprimir()
-            print("_________________________")
+            print("_________________________\n\n\n")
 
     
 class eslabon():
@@ -59,7 +59,7 @@ class eslabon():
     
     def imprimir(self):
         print("tipo eslabon : " + self.tipo_eslabon)
-        print("largo eslabon : " + str(self.largo_eslabon) )
+        print("largo eslabon : " + str(self.largo_eslabon)+ " cm")
         
 
 class articulacion():
@@ -78,19 +78,47 @@ class articulacion():
     def rotacion(self):
         grados = float(input("Grados de rotacion : "))
         grados = mt.radians(grados)
+        
         return(grados)
     
     def imprimir(self):
         if(self.tipo_articulacion == "Rotacional"):
             print("tipo articulacion :"+ self.tipo_articulacion)
-            print("grados de rotacion :" + str(self.grados_rotacion))
+            print("grados de rotacion :" + str(mt.degrees(self.grados_rotacion)) + " grados")
         else:
             print("tipo articulacion : " + self.tipo_articulacion)
+
+
+
+class algoritmo(manipulador):
+        eslabones = []
+        articulaciones = []
+
+        def __init__ (self,cadena_cinematica):
+            self.nodo = self.cadena_cinematica
+            for i in range(len(self.nodo)):
+                a = self.nodo[i]
+                if(type(a).__name__ == "eslabon"):
+                    self.eslabones.append(a)
+                else:
+                    self.articulaciones.append(a)
+            
+            self.paso1()
+        
+        def __str__(self):
+            cant = str(len(self.eslabones))+"--"+str(len(self.articulaciones))
+            return cant
+        
+        def paso1(self):
+            pass
 
 if __name__ == "__main__":
     os.system("cls")
     mi_manipulador = manipulador()
     mi_manipulador.imprimir_cadena()
+     
+    e = algoritmo(mi_manipulador.cadena_cinematica)
+    print(e)
     #mi_articulacion = articulacion()
     #print (mi_articulacion.tipo_articulacion)
     #print(str(mi_articulacion.grados_rotacion))
