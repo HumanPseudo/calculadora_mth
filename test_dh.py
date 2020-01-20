@@ -14,27 +14,28 @@ class manipulador():
         bandera = eslabones-1
         for i in range(eslabones):
             if (i == 0):
-                print("\n\n\n______eslabon______no #" + str(i))
+                print("\n______eslabon______no # : " + str(i))
                 self.cadena_cinematica.append(eslabon(0))
                 print("________articulacion___________")
                 self.cadena_cinematica.append(articulacion())
             elif(i == bandera):
-                print("\n\n\n______eslabon______no #" + str(i))
+                print("\n______eslabon______no # : " + str(i))
                 self.cadena_cinematica.append(eslabon(1))
             #elif(i !=)
             else:
-                print("\n\n\n______eslabon______no #" + str(i))
+                print("\n______eslabon______no # : " + str(i))
                 self.cadena_cinematica.append(eslabon(2))
                 print("________articulacion___________ ")
                 self.cadena_cinematica.append(articulacion())
 
     def imprimir_cadena(self):
+        #os.system("cls")
         for i in range(len(self.cadena_cinematica)):
-            print("_________________________")
+            print("\n_________________________")
             print("posicion numero " + str(i))
             print("_________________________")
             self.cadena_cinematica[i].imprimir()
-            print("_________________________\n\n\n")
+            print("_________________________\n")
 
     
 class eslabon():
@@ -96,27 +97,38 @@ class algoritmo(manipulador):
 
         def __init__ (self,cadena_cinematica):
             self.nodo = self.cadena_cinematica
+            b = 0
+            c = 1
             for i in range(len(self.nodo)):
                 a = self.nodo[i]
                 if(type(a).__name__ == "eslabon"):
-                    self.eslabones.append(a)
+                    self.eslabones.append((b,a))
+                    b += 1
                 else:
-                    self.articulaciones.append(a)
+                    self.articulaciones.append((c,a))
+                    c += 1
             
-            self.paso1()
+            #self.paso1()
         
         def __str__(self):
-            cant = str(len(self.eslabones))+"--"+str(len(self.articulaciones))
+            cant = str("Cantidad eslabones : "+str(len(self.eslabones))+" Cantidad articulaciones : "+str(len(self.articulaciones)))
             return cant
         
-        def paso1(self):
-            pass
+        # def paso1(self):
+        #     lista = []
+        #     for i in range(len(self.eslabones)):
+        #         a = self.eslabones[i]
+        #         if ()
+
+
+                
+
+    
 
 if __name__ == "__main__":
     os.system("cls")
     mi_manipulador = manipulador()
     mi_manipulador.imprimir_cadena()
-     
     e = algoritmo(mi_manipulador.cadena_cinematica)
     print(e)
     #mi_articulacion = articulacion()
