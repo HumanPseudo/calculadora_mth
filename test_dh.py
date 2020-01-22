@@ -61,7 +61,11 @@ class eslabon():
     def imprimir(self):
         print("tipo eslabon : " + self.tipo_eslabon)
         print("largo eslabon : " + str(self.largo_eslabon)+ " cm")
-        
+    
+    def __str__(self):
+        a = "tipo eslabon : " + self.tipo_eslabon
+        b = "\nlargo eslabon : " + str(self.largo_eslabon)+ " cm"
+        return a + b
 
 class articulacion():
     def __init__(self):
@@ -88,8 +92,18 @@ class articulacion():
             print("grados de rotacion :" + str(mt.degrees(self.grados_rotacion)) + " grados")
         else:
             print("tipo articulacion : " + self.tipo_articulacion)
-
-
+    
+    def __str__(self):
+        if(self.tipo_articulacion == "Rotacional"):
+            a = "tipo articulacion :"+ self.tipo_articulacion
+            b = "\ngrados de rotacion :" + str(mt.degrees(self.grados_rotacion)) + " grados"
+        else:
+            a = "tipo articulacion :"+ self.tipo_articulacion
+            b = ""
+    
+        
+        
+        return a + b
 
 class algoritmo(manipulador):
         eslabones = []
@@ -110,9 +124,29 @@ class algoritmo(manipulador):
             
             #self.paso1()
         
-        def __str__(self):
-            cant = str("Cantidad eslabones : "+str(len(self.eslabones))+" Cantidad articulaciones : "+str(len(self.articulaciones)))
-            return cant
+        # def __str__(self):
+        #     cant = str("Cantidad eslabones : "+str(len(self.eslabones))+" Cantidad articulaciones : "+str(len(self.articulaciones)))
+        #     return cant
+
+        def cadenas(self):
+            os.system("cls")
+            #print("largo de la cadena de eslabones : "+ str(len(self.eslabones)))
+            e_list = []
+            a_list = []
+            for i in range(len(self.eslabones)):
+                tupla = self.eslabones[i] 
+                e = tupla[1]
+                e_list.append(e)
+            for i in range(len(self.articulaciones)):
+                tupla = self.articulaciones[i] 
+                a = tupla[1]
+                a_list.append(a)
+            
+            return e_list,a_list
+            
+            
+                # a,b = tupla.index(0),tupla.index(1)
+                # print(a)
         
         # def paso1(self):
         #     lista = []
@@ -128,9 +162,17 @@ class algoritmo(manipulador):
 if __name__ == "__main__":
     os.system("cls")
     mi_manipulador = manipulador()
-    mi_manipulador.imprimir_cadena()
+    #mi_manipulador.imprimir_cadena()
     e = algoritmo(mi_manipulador.cadena_cinematica)
-    print(e)
+    #print(e)
+    cadena1,cadena2 = e.cadenas()
+    for i in range(len(cadena1)):
+        a = cadena1[i]
+        print(a)
+    for i in range(len(cadena2)):
+        a = cadena2[i]
+        print(a)
+
     #mi_articulacion = articulacion()
     #print (mi_articulacion.tipo_articulacion)
     #print(str(mi_articulacion.grados_rotacion))
